@@ -7,7 +7,7 @@ Dockerコンテナ上でansible環境を構築し、ホストPCからリモー�
 
 Makefileを読めばわかるが、Dockerfile内にPythonとSSH環境を構築し、
 接続先の情報をホストPCの.sshディレクトリをdockerコンテナ内にマウントして
-docker-playbookを実行している。
+ansible-playbookを実行している。
 
 ## 実行方法
 
