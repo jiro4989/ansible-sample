@@ -1,0 +1,13 @@
+/var/log/app/app1/*.log
+/var/log/app/app2/*.log
+/var/log/app/app3/*.log
+{
+  missingok
+  rotate 7
+  dateext
+  dateformat _%Y-%m-%d
+  compress
+  create 644 syslog syslog
+  copytruncate
+  daily
+}

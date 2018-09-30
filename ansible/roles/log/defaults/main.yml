@@ -1,0 +1,5 @@
+log_dir_root: /var/log/app
+log_dir:
+  - app1
+  - app2
+  - app3

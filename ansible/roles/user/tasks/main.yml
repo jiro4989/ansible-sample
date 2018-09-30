@@ -1,0 +1,8 @@
+- name: put user files
+  vars:
+    path: home/foobar/.vimrc
+  copy:
+    src: "../files/{{ path }}"
+    dest: "/{{ path }}"
+    mode: 0664
+    backup: yes

@@ -1,0 +1,6 @@
+[webservers]
+dev-web
+
+[dbservers]
+dev-db
+

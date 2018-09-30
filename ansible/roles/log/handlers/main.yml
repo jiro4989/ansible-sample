@@ -1,0 +1,20 @@
+- name: restart_rsyslog
+  systemd:
+    name: rsyslog.service
+    state: restarted
+    enabled: yes
+  become: yes
+
+- name: restart_logrotate
+  systemd:
+    name: syslog.service
+    state: restarted
+    enabled: yes
+  become: yes
+
+- name: restart_cron
+  systemd:
+    name: cron.service
+    state: restarted
+    enabled: yes
+  become: yes

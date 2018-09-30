@@ -1,0 +1,5 @@
+- hosts: web
+  remote_user: foobar
+  roles:
+    - log
+    - user

@@ -1,0 +1,5 @@
+version: '3'
+services:
+  ansible:
+    build: ./dockerfile/ansible
+    container_name: ansible

@@ -1,0 +1,6 @@
+[webservers]
+prd-web
+
+[dbservers]
+prd-db
+

@@ -1,0 +1,68 @@
+---
+- name: make root log directory
+  file:
+    path: "{{ log_dir_root }}"
+    mode: 0755
+    owner: root
+    group: root
+    state: directory
+  become: yes
+
+- name: make application log directories
+  file:
+    path: "{{ log_dir_root }}/{{ item }}"
+    mode: 0755
+    owner: syslog
+    group: syslog
+    state: directory
+  with_items: "{{ log_dir }}"
+  become: yes
+
+- name: create application log files
+  file:
+    path: "{{ log_dir_root }}/{{ item }}/{{ item }}.log"
+    mode: 0640
+    owner: syslog
+    group: adm
+    state: touch
+  with_items: "{{ log_dir }}"
+  become: yes
+
+- name: setup rsyslog
+  vars:
+    path: etc/rsyslog.d/app.conf
+  copy:
+    src: "../files/{{ path }}"
+    dest: "/{{ path }}"
+    mode: 0644
+    owner: root
+    group: root
+    backup: yes
+  become: yes
+  notify: restart_rsyslog
+
+- name: setup logrotate
+  vars:
+    path: etc/logrotate.d/app
+  copy:
+    src: "../files/{{ path }}"
+    dest: "/{{ path }}"
+    mode: 0644
+    owner: root
+    group: root
+    backup: yes
+  become: yes
+  notify: restart_logrotate
+
+- name: setup cron
+  vars:
+    path: etc/cron.d/app
+  copy:
+    src: "../files/{{ path }}"
+    dest: "/{{ path }}"
+    mode: 0644
+    owner: root
+    group: root
+    backup: yes
+  become: yes
+  notify: restart_cron

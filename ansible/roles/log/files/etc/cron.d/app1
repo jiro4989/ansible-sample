@@ -1,0 +1,1 @@
+#*/10 * * * * appuser echo 1 >> /tmp/app1.log
